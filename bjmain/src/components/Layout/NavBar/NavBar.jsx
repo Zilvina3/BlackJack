@@ -1,6 +1,7 @@
 import './NavBar.css'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import ADDRESS from '../../../config'
 
 const links = [
     {
@@ -18,19 +19,33 @@ const links = [
 ]
 
 
+const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"
+];
+
 const NavBar = () => {
 
-    const [onlineCount, setOnlineCount] = useState(0);
+    const [onlineCount, setOnlineCount] = useState('');
+    const [time, setDateState] = useState('')
+
+    const tim = new Date();
+        setInterval(() => setDateState({
+            hours: tim.getHours(),
+            minutes: tim.getMinutes(),
+            seconds: tim.getSeconds(),
+            month: monthNames[tim.getMonth()],
+            day: tim.getDate()
+        }), 5000);
 
     useEffect(() => {
-        fetch('http://localhost:8080/v1/users/count',{
+        fetch(`http://${ADDRESS}:8080/v1/users/count`,{
     method: 'GET'
     })
     .then(res => res.json())
     .then(res => {
     setOnlineCount(res[0].count)
     })
-    })
+    }, [])
 
     return(
         <nav>
@@ -45,6 +60,9 @@ const NavBar = () => {
             <div className='onlineCountWrap'>
                 <span className='online'>Players online:</span>  <span className='count_num'>{onlineCount}</span>
             </div>
+            <div className="time">
+                {time ?  <span><h3>{time.month + ' ' + time.day}</h3>{time.hours + ' : ' + time.minutes + ' : ' + time.seconds}</span> : 'Date'}
+             </div>
         </nav>
     )
 }
