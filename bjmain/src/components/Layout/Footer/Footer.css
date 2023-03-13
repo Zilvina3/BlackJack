@@ -1,0 +1,14 @@
+footer {
+    height: 50px;
+    width: 100%;
+    position: absolute;
+    bottom: 0px;
+    background-color: bisque;
+    display: flex;
+    justify-content: center;
+}
+
+.testing-foot {
+    color: red;
+    align-self: center;
+}

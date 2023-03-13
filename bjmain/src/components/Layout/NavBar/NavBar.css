@@ -1,0 +1,24 @@
+nav {
+    height: 70px;
+    background-color: bisque;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 100px 0px 100px;
+}
+
+.BlackJack {
+    font-size: 30px;
+}
+
+.BlackJack, .linkWrap {
+    align-self: center;
+}
+
+.BJhead:hover {
+    color: black;
+}
+
+.linkWrap a {
+    font-weight: 700;
+    padding: 10px 20px;
+}

@@ -1,0 +1,15 @@
+.home_wrap {
+    margin: 100px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.home_wrap h2 a {
+    color: blue;
+}
+
+.home_wrap h2 a:hover {
+    color: red;
+}
