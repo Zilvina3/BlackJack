@@ -13,3 +13,11 @@
 .home_wrap h2 a:hover {
     color: red;
 }
+
+.time {
+    font-weight: 700;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px;
+}
