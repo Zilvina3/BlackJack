@@ -22,3 +22,17 @@ nav {
     font-weight: 700;
     padding: 10px 20px;
 }
+
+.online {
+    font-weight: 700;
+    color: blue;
+}
+
+.count_num {
+    color: green;
+    font-weight: 700;
+}
+
+.onlineCountWrap {
+    align-self: center;
+}
