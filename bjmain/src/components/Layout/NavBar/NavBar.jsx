@@ -1,5 +1,6 @@
 import './NavBar.css'
 import { Link } from 'react-router-dom'
+import { useEffect, useState } from 'react'
 
 const links = [
     {
@@ -16,7 +17,21 @@ const links = [
     },
 ]
 
+
 const NavBar = () => {
+
+    const [onlineCount, setOnlineCount] = useState(0);
+
+    useEffect(() => {
+        fetch('http://localhost:8080/v1/users/count',{
+    method: 'GET'
+    })
+    .then(res => res.json())
+    .then(res => {
+    setOnlineCount(res[0].count)
+    })
+    })
+
     return(
         <nav>
             <h1 className='BlackJack'><Link title='Go to Home' className='BJhead' to={'/'}>BlackJack</Link> </h1>
@@ -27,6 +42,9 @@ const NavBar = () => {
                 )
             })} 
             </div>         
+            <div className='onlineCountWrap'>
+                <span className='online'>Players online:</span>  <span className='count_num'>{onlineCount}</span>
+            </div>
         </nav>
     )
 }
