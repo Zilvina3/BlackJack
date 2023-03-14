@@ -39,4 +39,10 @@ nav {
 
 .time {
     align-self: center;
+    display: flex;
+    justify-content: center;
+}
+
+.timer {
+    text-align: center;
 }

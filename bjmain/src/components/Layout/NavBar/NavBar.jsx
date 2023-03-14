@@ -61,7 +61,7 @@ const NavBar = () => {
                 <span className='online'>Players online:</span>  <span className='count_num'>{onlineCount}</span>
             </div>
             <div className="time">
-                {time ?  <span><h3>{time.month + ' ' + time.day}</h3>{time.hours + ' : ' + time.minutes + ' : ' + time.seconds}</span> : 'Date'}
+                {time ?  <span className='timer'><h3>{time.month + ' ' + time.day}</h3>{time.hours + ' : ' + time.minutes}</span> : 'Date'}
              </div>
         </nav>
     )
