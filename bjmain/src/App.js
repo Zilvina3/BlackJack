@@ -2,6 +2,7 @@ import './App.css'
 import { Routes, Route } from "react-router-dom"
 import Home from './components/Home/Home';
 import Layout from './components/Layout/Layout';
+import Register from './components/Register/Register';
 
 
 const routes = [
@@ -15,7 +16,7 @@ const routes = [
   },
   {
     path : '/register',
-    element : <Layout children={<h1>register</h1>} /> 
+    element : <Layout children={<Register />} /> 
   },
   {
     path : '/login',
