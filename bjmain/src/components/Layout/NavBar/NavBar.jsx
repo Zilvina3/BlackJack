@@ -1,7 +1,7 @@
 import './NavBar.css'
 import { Link } from 'react-router-dom'
 import { useEffect, useState } from 'react'
-import ADDRESS from '../../../config'
+import { ADDRESS } from '../../../config'
 
 const links = [
     {
@@ -61,7 +61,7 @@ const NavBar = () => {
                 <span className='online'>Players online:</span>  <span className='count_num'>{onlineCount}</span>
             </div>
             <div className="time">
-                {time ?  <span className='timer'><h3>{time.month + ' ' + time.day}</h3>{time.hours + ' : ' + time.minutes}</span> : 'Date'}
+                {time ?  <span className='timer'><h3>{time.month + ' ' + time.day}</h3>{time.hours + ' : ' + time.minutes}</span> : 'Hi, Loading Date . . .'}
              </div>
         </nav>
     )

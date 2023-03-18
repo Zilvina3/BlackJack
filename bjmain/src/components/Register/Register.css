@@ -21,7 +21,7 @@ label {
     font-weight: 700;
 }
 
-label, #name, #password, #password2 {
+label, #name, #password, #password2, #email {
     width: 55%;
     align-self: center;
     border-radius: 7px;
@@ -39,4 +39,11 @@ label, #name, #password, #password2 {
     text-align: center;
     color: red;
     margin: 20px 0 0 0;
+}
+
+.reg_good {
+        width: 100%;
+        text-align: center;
+        color: green;
+        margin: 20px 0 0 0;
 }
