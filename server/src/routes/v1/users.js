@@ -1,13 +1,14 @@
 const express = require('express');
 const mysql = require('mysql2/promise');
-const { dbConfig } = require("../../config");
+const { dbConfig, jwtSecret } = require("../../config");
 const Joi = require("joi");
 const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 
 const newUserSchema = Joi.object({
     userName: Joi.string().required().min(5).max(12),
-    password: Joi.string().required().min(3).max(20),
-    psw: Joi.string().required().min(3).max(20),
+    password: Joi.string().required().min(3).max(16),
+    psw: Joi.string().required().min(3).max(16),
     email: Joi.string().required().min(5).max(30),
     status: Joi.number().max(1),
     money: Joi.number().required().max(1000),
@@ -69,6 +70,37 @@ router.post('/register', async (req, res) => {
     }catch (error) {
         res.status(500).send({ error : error })
     }
+})
+
+
+router.post('/login', async (req, res) => {
+
+    const logBody = req.body
+
+    try {
+        const con = await mysql.createConnection(dbConfig);
+    const [resp] = await con.query(`SELECT id, userName, password FROM users WHERE email = ?`, [logBody.email])
+    con.end();
+
+    if(!resp.length) {
+        return res.status(400).send({loginError: 'Invalid user name or password'});
+    }
+
+    const check_password = bcrypt.compareSync(logBody.password, resp[0].password);
+
+    if(!check_password) {
+        return res.status(400). send({loginError : 'Invalid user name or password...'})
+    }
+
+    const token = jwt.sign({user_id : resp[0].id}, jwtSecret)
+
+    res.send({token, user_id : resp[0].id, userName : resp[0].userName})
+    }catch(error) {
+        console.log(error)
+        res.status(500).send({error : error})
+    }
+
+    
 })
 
 module.exports = router;
