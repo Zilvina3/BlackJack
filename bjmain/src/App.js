@@ -3,6 +3,7 @@ import { Routes, Route } from "react-router-dom"
 import Home from './components/Home/Home';
 import Layout from './components/Layout/Layout';
 import Register from './components/Register/Register';
+import Login from './components/Login/Login';
 
 
 const routes = [
@@ -20,7 +21,7 @@ const routes = [
   },
   {
     path : '/login',
-    element : <Layout children={<h1>login</h1>} /> 
+    element : <Layout children={<Login />} /> 
   },
   {
     path : '*',

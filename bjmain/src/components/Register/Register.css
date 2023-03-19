@@ -12,7 +12,7 @@ form {
     flex-direction: column;
 }
 
-.reg_wrap {
+.form_wrap {
     display: flex;
     flex-direction: column;
 }
@@ -28,20 +28,26 @@ label, #name, #password, #password2, #email {
     padding: 5px;
 }
 
-.reg_but {
+.form_but {
     width: 30%;
     align-self: center;
     margin: 30px 0 0 5px;
 }
 
-.reg_errors {
+.mainLoading {
+    opacity: 0.7;
+}
+
+#reg_errors {
+    opacity: 1;
     width: 100%;
     text-align: center;
     color: red;
     margin: 20px 0 0 0;
 }
 
-.reg_good {
+#reg_good {
+        opacity: 1;
         width: 100%;
         text-align: center;
         color: green;
