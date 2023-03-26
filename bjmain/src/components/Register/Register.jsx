@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Register.css'
 import { reg_path } from '../../config';
@@ -12,11 +12,16 @@ const Register = () => {
     const [message, setMessage] = useState(false);
     const [loading, setLoading] = useState(false);
 
+    useEffect(() => {
+        localStorage.clear();
+    }, [])
+
     const Navigate = useNavigate();
 
     return (
-
+            <div>
             <main className={loading ? 'mainLoading' : null}>
+                <h1 className='form_header'>Create new account</h1>
                 <form onSubmit={(e) => {
                     e.preventDefault();
 
@@ -113,9 +118,10 @@ const Register = () => {
                         </button>
                     </div>
                 </form>
-                  {regErrors && <div id={message ? 'reg_good' : 'reg_errors'}>{regErrors}</div> }
                   {loading && <LoadingSpin loadingClass={loading ? 'loadingOn' : 'loadingOff'} /> }
             </main>
+            {regErrors && <div id={message ? 'reg_good' : 'reg_errors'}>{regErrors}</div> }
+            </div>
 )
 }
 

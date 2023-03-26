@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { log_path } from '../../config';
+import { useNavigate } from 'react-router-dom';
+import LoadingSpin from '../SmallComps/LoadingSpin/LoadingSpin';
 import axios from 'axios';
 import './Login.css'
 
@@ -9,9 +11,14 @@ const Login = () => {
 
     const [logMessage, setLogMessage] = useState(false)
     const [error ,setError] = useState(false)
+    const [loading, setLoading] = useState(false)
+
+    const navigate = useNavigate();
 
     return(
+        <div>
         <main>
+        <h1 className='form_header'>Login</h1>
             <form onSubmit={(e) => {
                 e.preventDefault()
                 console.log('log in')
@@ -20,6 +27,8 @@ const Login = () => {
                     email : e.target.email.value,
                     password: e.target.password.value
                 }
+
+
 
                 axios.post(log_path, logIn, {
                     headers: {
@@ -30,13 +39,18 @@ const Login = () => {
                         localStorage.setItem('token', response.data.token)
                         const data = JSON.stringify(response.data)
                         localStorage.setItem('user', data);    
-                        setLogMessage('Logged in succesfuly . . .')
+                        setLogMessage('Logged in successfully . . .')
                         setError(false)
+                        setLoading(true)
+                        setTimeout(() => {
+                            navigate('/rooms')
+                        }, 2000)
                     })
                     .catch((error) => {
                         console.log(error.response.data)
                         setLogMessage(error.response.data.loginError)
                         setError(true)
+                        setLoading(false)
                     })
             }}>
                 <div className='form_wrap'>
@@ -51,8 +65,10 @@ const Login = () => {
                     <button type='submit' className='form_but'>Log in</button>
                 </div>
             </form>
-               {logMessage && <div id={error ? 'logError' : 'logGood'}>{logMessage}</div> }
+               {loading && <LoadingSpin loadingClass={loading ? 'loadingOn' : 'loadingOff'} /> }
         </main>
+        {logMessage && <div id={error ? 'logError' : 'logGood'}>{logMessage}</div> }
+        </div>
     )
 }
 
