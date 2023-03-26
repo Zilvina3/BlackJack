@@ -1,15 +1,19 @@
 #logError {
+    font-weight: 700;
+    font-size: 20px;
     opacity: 1;
     width: 100%;
     text-align: center;
     color: red;
-    margin: 20px 0 0 0;
+    margin: 5px 0 0 0;
 }
 
 #logGood {
+    font-weight: 700;
+    font-size: 20px;
         opacity: 1;
         width: 100%;
         text-align: center;
         color: green;
-        margin: 20px 0 0 0;
+        margin: 5px 0 0 0;
 }

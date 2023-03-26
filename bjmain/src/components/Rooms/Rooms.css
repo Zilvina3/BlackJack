@@ -1,0 +1,31 @@
+.main_chat_wrap {
+    width: 600px;
+}
+
+.chat_wrap {
+    border: 2px solid black;
+    width: 600px;
+    height: 300px;
+    overflow:scroll;
+    overflow-x:hidden;
+    display: flex;
+flex-direction: column-reverse;
+}
+
+.chat_box {
+    padding: 5px;
+}
+
+.chat_user {
+    color: orange;
+    font-weight: 700;
+}
+
+.chat_message {
+    word-wrap: break-word;
+}
+
+textarea {
+    resize: none;
+    font-size: 16px;
+  }
